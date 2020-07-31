@@ -1,0 +1,24 @@
+Assume incompressible flow!
+
+- We have control of the stepper motor speed (&position/acceleration), w_stp
+-- We want to control the flow rate of the extrusion fluid, v_nf
+
+stepper resolution, res = 0.18 deg/ustep
+linear actuator pitch, p = 2mm/360deg = 5.5555e-6 m/deg
+
+syringe cross area A_s = pi * (10e-3)^2 = pi*10^-4 m^2
+nozzle cros area  A_n = pi (1e-3)^2 = pi*10^-6 m^2
+
+Norm print head speed, v_p ~= 20 - 150mm/s
+
+let v_p = v_nf (nozzle flow speed):
+
+A_s*v_sf = A_n*v_nf
+
+-> v_sf = A_n/A_s * v_nf
+
+w_stp = v_sf / p
+
+-> v_sf = w_stp * p
+
+w_stp = 10^-6/10^-4 * v_nf / 5.5555e-6 = 36 - 270 deg/s
